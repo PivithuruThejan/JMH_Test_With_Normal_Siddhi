@@ -33,6 +33,7 @@ import org.openjdk.jmh.results.AggregationPolicy;
 import org.openjdk.jmh.runner.FailureAssistException;
 
 import com.jenkov.generated.MyBenchmark_jmhType;
+import com.jenkov.generated.MyBenchmark_StartUpState_jmhType;
 public final class MyBenchmark_testMethod_jmhTest {
 
     boolean p000, p001, p002, p003, p004, p005, p006, p007, p008, p009, p010, p011, p012, p013, p014, p015;
@@ -69,23 +70,24 @@ public final class MyBenchmark_testMethod_jmhTest {
         if (threadParams.getSubgroupIndex() == 0) {
             RawResults res = new RawResults();
             MyBenchmark_jmhType l_mybenchmark0_0 = _jmh_tryInit_f_mybenchmark0_0(control);
+            MyBenchmark_StartUpState_jmhType l_startupstate1_G = _jmh_tryInit_f_startupstate1_G(control);
 
             control.preSetup();
 
 
             control.announceWarmupReady();
             while (control.warmupShouldWait) {
-                l_mybenchmark0_0.testMethod();
+                l_mybenchmark0_0.testMethod(l_startupstate1_G);
                 res.allOps++;
             }
 
             notifyControl.startMeasurement = true;
-            testMethod_thrpt_jmhStub(control, res, benchmarkParams, iterationParams, threadParams, blackhole, notifyControl, startRndMask, l_mybenchmark0_0);
+            testMethod_thrpt_jmhStub(control, res, benchmarkParams, iterationParams, threadParams, blackhole, notifyControl, startRndMask, l_startupstate1_G, l_mybenchmark0_0);
             notifyControl.stopMeasurement = true;
             control.announceWarmdownReady();
             try {
                 while (control.warmdownShouldWait) {
-                    l_mybenchmark0_0.testMethod();
+                    l_mybenchmark0_0.testMethod(l_startupstate1_G);
                     res.allOps++;
                 }
                 control.preTearDown();
@@ -94,6 +96,9 @@ public final class MyBenchmark_testMethod_jmhTest {
             }
 
             if (control.isLastIteration()) {
+                synchronized(this.getClass()) {
+                    f_startupstate1_G = null;
+                }
                 f_mybenchmark0_0 = null;
             }
             res.allOps += res.measuredOps;
@@ -111,12 +116,12 @@ public final class MyBenchmark_testMethod_jmhTest {
             throw new IllegalStateException("Harness failed to distribute threads among groups properly");
     }
 
-    public static void testMethod_thrpt_jmhStub(InfraControl control, RawResults result, BenchmarkParams benchmarkParams, IterationParams iterationParams, ThreadParams threadParams, Blackhole blackhole, Control notifyControl, int startRndMask, MyBenchmark_jmhType l_mybenchmark0_0) throws Throwable {
+    public static void testMethod_thrpt_jmhStub(InfraControl control, RawResults result, BenchmarkParams benchmarkParams, IterationParams iterationParams, ThreadParams threadParams, Blackhole blackhole, Control notifyControl, int startRndMask, MyBenchmark_StartUpState_jmhType l_startupstate1_G, MyBenchmark_jmhType l_mybenchmark0_0) throws Throwable {
         long operations = 0;
         long realTime = 0;
         result.startTime = System.nanoTime();
         do {
-            l_mybenchmark0_0.testMethod();
+            l_mybenchmark0_0.testMethod(l_startupstate1_G);
             operations++;
         } while(!control.isDone);
         result.stopTime = System.nanoTime();
@@ -136,23 +141,24 @@ public final class MyBenchmark_testMethod_jmhTest {
         if (threadParams.getSubgroupIndex() == 0) {
             RawResults res = new RawResults();
             MyBenchmark_jmhType l_mybenchmark0_0 = _jmh_tryInit_f_mybenchmark0_0(control);
+            MyBenchmark_StartUpState_jmhType l_startupstate1_G = _jmh_tryInit_f_startupstate1_G(control);
 
             control.preSetup();
 
 
             control.announceWarmupReady();
             while (control.warmupShouldWait) {
-                l_mybenchmark0_0.testMethod();
+                l_mybenchmark0_0.testMethod(l_startupstate1_G);
                 res.allOps++;
             }
 
             notifyControl.startMeasurement = true;
-            testMethod_avgt_jmhStub(control, res, benchmarkParams, iterationParams, threadParams, blackhole, notifyControl, startRndMask, l_mybenchmark0_0);
+            testMethod_avgt_jmhStub(control, res, benchmarkParams, iterationParams, threadParams, blackhole, notifyControl, startRndMask, l_startupstate1_G, l_mybenchmark0_0);
             notifyControl.stopMeasurement = true;
             control.announceWarmdownReady();
             try {
                 while (control.warmdownShouldWait) {
-                    l_mybenchmark0_0.testMethod();
+                    l_mybenchmark0_0.testMethod(l_startupstate1_G);
                     res.allOps++;
                 }
                 control.preTearDown();
@@ -161,6 +167,9 @@ public final class MyBenchmark_testMethod_jmhTest {
             }
 
             if (control.isLastIteration()) {
+                synchronized(this.getClass()) {
+                    f_startupstate1_G = null;
+                }
                 f_mybenchmark0_0 = null;
             }
             res.allOps += res.measuredOps;
@@ -178,12 +187,12 @@ public final class MyBenchmark_testMethod_jmhTest {
             throw new IllegalStateException("Harness failed to distribute threads among groups properly");
     }
 
-    public static void testMethod_avgt_jmhStub(InfraControl control, RawResults result, BenchmarkParams benchmarkParams, IterationParams iterationParams, ThreadParams threadParams, Blackhole blackhole, Control notifyControl, int startRndMask, MyBenchmark_jmhType l_mybenchmark0_0) throws Throwable {
+    public static void testMethod_avgt_jmhStub(InfraControl control, RawResults result, BenchmarkParams benchmarkParams, IterationParams iterationParams, ThreadParams threadParams, Blackhole blackhole, Control notifyControl, int startRndMask, MyBenchmark_StartUpState_jmhType l_startupstate1_G, MyBenchmark_jmhType l_mybenchmark0_0) throws Throwable {
         long operations = 0;
         long realTime = 0;
         result.startTime = System.nanoTime();
         do {
-            l_mybenchmark0_0.testMethod();
+            l_mybenchmark0_0.testMethod(l_startupstate1_G);
             operations++;
         } while(!control.isDone);
         result.stopTime = System.nanoTime();
@@ -203,13 +212,14 @@ public final class MyBenchmark_testMethod_jmhTest {
         if (threadParams.getSubgroupIndex() == 0) {
             RawResults res = new RawResults();
             MyBenchmark_jmhType l_mybenchmark0_0 = _jmh_tryInit_f_mybenchmark0_0(control);
+            MyBenchmark_StartUpState_jmhType l_startupstate1_G = _jmh_tryInit_f_startupstate1_G(control);
 
             control.preSetup();
 
 
             control.announceWarmupReady();
             while (control.warmupShouldWait) {
-                l_mybenchmark0_0.testMethod();
+                l_mybenchmark0_0.testMethod(l_startupstate1_G);
                 res.allOps++;
             }
 
@@ -218,12 +228,12 @@ public final class MyBenchmark_testMethod_jmhTest {
             int batchSize = iterationParams.getBatchSize();
             int opsPerInv = benchmarkParams.getOpsPerInvocation();
             SampleBuffer buffer = new SampleBuffer();
-            testMethod_sample_jmhStub(control, res, benchmarkParams, iterationParams, threadParams, blackhole, notifyControl, startRndMask, buffer, targetSamples, opsPerInv, batchSize, l_mybenchmark0_0);
+            testMethod_sample_jmhStub(control, res, benchmarkParams, iterationParams, threadParams, blackhole, notifyControl, startRndMask, buffer, targetSamples, opsPerInv, batchSize, l_startupstate1_G, l_mybenchmark0_0);
             notifyControl.stopMeasurement = true;
             control.announceWarmdownReady();
             try {
                 while (control.warmdownShouldWait) {
-                    l_mybenchmark0_0.testMethod();
+                    l_mybenchmark0_0.testMethod(l_startupstate1_G);
                     res.allOps++;
                 }
                 control.preTearDown();
@@ -232,6 +242,9 @@ public final class MyBenchmark_testMethod_jmhTest {
             }
 
             if (control.isLastIteration()) {
+                synchronized(this.getClass()) {
+                    f_startupstate1_G = null;
+                }
                 f_mybenchmark0_0 = null;
             }
             res.allOps += res.measuredOps * batchSize;
@@ -246,7 +259,7 @@ public final class MyBenchmark_testMethod_jmhTest {
             throw new IllegalStateException("Harness failed to distribute threads among groups properly");
     }
 
-    public static void testMethod_sample_jmhStub(InfraControl control, RawResults result, BenchmarkParams benchmarkParams, IterationParams iterationParams, ThreadParams threadParams, Blackhole blackhole, Control notifyControl, int startRndMask, SampleBuffer buffer, int targetSamples, long opsPerInv, int batchSize, MyBenchmark_jmhType l_mybenchmark0_0) throws Throwable {
+    public static void testMethod_sample_jmhStub(InfraControl control, RawResults result, BenchmarkParams benchmarkParams, IterationParams iterationParams, ThreadParams threadParams, Blackhole blackhole, Control notifyControl, int startRndMask, SampleBuffer buffer, int targetSamples, long opsPerInv, int batchSize, MyBenchmark_StartUpState_jmhType l_startupstate1_G, MyBenchmark_jmhType l_mybenchmark0_0) throws Throwable {
         long realTime = 0;
         long operations = 0;
         int rnd = (int)System.nanoTime();
@@ -261,7 +274,7 @@ public final class MyBenchmark_testMethod_jmhTest {
             }
             for (int b = 0; b < batchSize; b++) {
                 if (control.volatileSpoiler) return;
-                l_mybenchmark0_0.testMethod();
+                l_mybenchmark0_0.testMethod(l_startupstate1_G);
             }
             if (sample) {
                 buffer.add((System.nanoTime() - time) / opsPerInv);
@@ -289,6 +302,7 @@ public final class MyBenchmark_testMethod_jmhTest {
         }
         if (threadParams.getSubgroupIndex() == 0) {
             MyBenchmark_jmhType l_mybenchmark0_0 = _jmh_tryInit_f_mybenchmark0_0(control);
+            MyBenchmark_StartUpState_jmhType l_startupstate1_G = _jmh_tryInit_f_startupstate1_G(control);
 
             control.preSetup();
 
@@ -296,10 +310,13 @@ public final class MyBenchmark_testMethod_jmhTest {
             notifyControl.startMeasurement = true;
             RawResults res = new RawResults();
             int batchSize = iterationParams.getBatchSize();
-            testMethod_ss_jmhStub(control, res, benchmarkParams, iterationParams, threadParams, blackhole, notifyControl, startRndMask, batchSize, l_mybenchmark0_0);
+            testMethod_ss_jmhStub(control, res, benchmarkParams, iterationParams, threadParams, blackhole, notifyControl, startRndMask, batchSize, l_startupstate1_G, l_mybenchmark0_0);
             control.preTearDown();
 
             if (control.isLastIteration()) {
+                synchronized(this.getClass()) {
+                    f_startupstate1_G = null;
+                }
                 f_mybenchmark0_0 = null;
             }
             int opsPerInv = control.benchmarkParams.getOpsPerInvocation();
@@ -312,17 +329,42 @@ public final class MyBenchmark_testMethod_jmhTest {
             throw new IllegalStateException("Harness failed to distribute threads among groups properly");
     }
 
-    public static void testMethod_ss_jmhStub(InfraControl control, RawResults result, BenchmarkParams benchmarkParams, IterationParams iterationParams, ThreadParams threadParams, Blackhole blackhole, Control notifyControl, int startRndMask, int batchSize, MyBenchmark_jmhType l_mybenchmark0_0) throws Throwable {
+    public static void testMethod_ss_jmhStub(InfraControl control, RawResults result, BenchmarkParams benchmarkParams, IterationParams iterationParams, ThreadParams threadParams, Blackhole blackhole, Control notifyControl, int startRndMask, int batchSize, MyBenchmark_StartUpState_jmhType l_startupstate1_G, MyBenchmark_jmhType l_mybenchmark0_0) throws Throwable {
         long realTime = 0;
         result.startTime = System.nanoTime();
         for (int b = 0; b < batchSize; b++) {
             if (control.volatileSpoiler) return;
-            l_mybenchmark0_0.testMethod();
+            l_mybenchmark0_0.testMethod(l_startupstate1_G);
         }
         result.stopTime = System.nanoTime();
         result.realTime = realTime;
     }
 
+    
+    static volatile MyBenchmark_StartUpState_jmhType f_startupstate1_G;
+    
+    MyBenchmark_StartUpState_jmhType _jmh_tryInit_f_startupstate1_G(InfraControl control) throws Throwable {
+        MyBenchmark_StartUpState_jmhType val = f_startupstate1_G;
+        if (val != null) {
+            return val;
+        }
+        synchronized(this.getClass()) {
+            try {
+            if (control.isFailing) throw new FailureAssistException();
+            val = f_startupstate1_G;
+            if (val != null) {
+                return val;
+            }
+            val = new MyBenchmark_StartUpState_jmhType();
+            val.readyTrial = true;
+            f_startupstate1_G = val;
+            } catch (Throwable t) {
+                control.isFailing = true;
+                throw t;
+            }
+        }
+        return val;
+    }
     
     MyBenchmark_jmhType f_mybenchmark0_0;
     
