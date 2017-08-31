@@ -83,8 +83,9 @@ public class MyBenchmark {
         public String definition = "@config(async = 'true') define stream players(playerName string,country string," +
                 "TestAverage float,TestStrikeRate float,ODIAverage float,ODIStrikeRate float,T20Average float," +
                 "T20StrikeRate float,BattingStyle string);";
-        public String query = "@info(name = 'query1') from players[TestAverage>45.0 and (ODIAverage>40.0 or " +
-                "ODIStrikeRate>100.0) and not(T20Average<10.0 or T20StrikeRate>150.0)] select playerName, BattingStyle "
+        public String query = "@info(name = 'query1') from players[TestAverage>45.0 and (ODIAverage>40.0 or ODIStrikeRate>100.0)" +
+                "and not(T20Average<10.0 or T20StrikeRate>150.0) or (ODIAverage<35.0 or T20StrikeRate>130.0 and " +
+                "not(TestStrikeRate < 55.0))] select playerName, BattingStyle "
                 + "insert into sqaud;";
         public SiddhiManager siddhiManager = new SiddhiManager();
         public SiddhiAppRuntime siddhiAppRuntime = siddhiManager.createSiddhiAppRuntime(definition + query);

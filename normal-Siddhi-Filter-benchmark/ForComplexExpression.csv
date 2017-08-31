@@ -1,0 +1,4 @@
+Benchmark,Mode,Threads,Samples,Score,Score Error (99.9%),Unit
+com.jenkov.MyBenchmark.testMethod,thrpt,1,200,0.383092,0.007204,ops/s
+,,,,,,
+Statememt:TestAverage>45.0 and (ODIAverage>40.0 or ODIStrikeRate>100.0)and not(T20Average<10.0 or T20StrikeRate>150.0) or (ODIAverage<35.0 orT20StrikeRate>130.0 and not(TestStrikeRate < 55.0)),,,,,,
