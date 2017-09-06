@@ -77,7 +77,7 @@ public final class MyBenchmark_testMethod_jmhTest {
 
             control.announceWarmupReady();
             while (control.warmupShouldWait) {
-                l_mybenchmark0_0.testMethod(l_startupstate1_G);
+                l_mybenchmark0_0.testMethod(l_startupstate1_G, blackhole);
                 res.allOps++;
             }
 
@@ -87,7 +87,7 @@ public final class MyBenchmark_testMethod_jmhTest {
             control.announceWarmdownReady();
             try {
                 while (control.warmdownShouldWait) {
-                    l_mybenchmark0_0.testMethod(l_startupstate1_G);
+                    l_mybenchmark0_0.testMethod(l_startupstate1_G, blackhole);
                     res.allOps++;
                 }
                 control.preTearDown();
@@ -121,7 +121,7 @@ public final class MyBenchmark_testMethod_jmhTest {
         long realTime = 0;
         result.startTime = System.nanoTime();
         do {
-            l_mybenchmark0_0.testMethod(l_startupstate1_G);
+            l_mybenchmark0_0.testMethod(l_startupstate1_G, blackhole);
             operations++;
         } while(!control.isDone);
         result.stopTime = System.nanoTime();
@@ -148,7 +148,7 @@ public final class MyBenchmark_testMethod_jmhTest {
 
             control.announceWarmupReady();
             while (control.warmupShouldWait) {
-                l_mybenchmark0_0.testMethod(l_startupstate1_G);
+                l_mybenchmark0_0.testMethod(l_startupstate1_G, blackhole);
                 res.allOps++;
             }
 
@@ -158,7 +158,7 @@ public final class MyBenchmark_testMethod_jmhTest {
             control.announceWarmdownReady();
             try {
                 while (control.warmdownShouldWait) {
-                    l_mybenchmark0_0.testMethod(l_startupstate1_G);
+                    l_mybenchmark0_0.testMethod(l_startupstate1_G, blackhole);
                     res.allOps++;
                 }
                 control.preTearDown();
@@ -192,7 +192,7 @@ public final class MyBenchmark_testMethod_jmhTest {
         long realTime = 0;
         result.startTime = System.nanoTime();
         do {
-            l_mybenchmark0_0.testMethod(l_startupstate1_G);
+            l_mybenchmark0_0.testMethod(l_startupstate1_G, blackhole);
             operations++;
         } while(!control.isDone);
         result.stopTime = System.nanoTime();
@@ -219,7 +219,7 @@ public final class MyBenchmark_testMethod_jmhTest {
 
             control.announceWarmupReady();
             while (control.warmupShouldWait) {
-                l_mybenchmark0_0.testMethod(l_startupstate1_G);
+                l_mybenchmark0_0.testMethod(l_startupstate1_G, blackhole);
                 res.allOps++;
             }
 
@@ -233,7 +233,7 @@ public final class MyBenchmark_testMethod_jmhTest {
             control.announceWarmdownReady();
             try {
                 while (control.warmdownShouldWait) {
-                    l_mybenchmark0_0.testMethod(l_startupstate1_G);
+                    l_mybenchmark0_0.testMethod(l_startupstate1_G, blackhole);
                     res.allOps++;
                 }
                 control.preTearDown();
@@ -274,7 +274,7 @@ public final class MyBenchmark_testMethod_jmhTest {
             }
             for (int b = 0; b < batchSize; b++) {
                 if (control.volatileSpoiler) return;
-                l_mybenchmark0_0.testMethod(l_startupstate1_G);
+                l_mybenchmark0_0.testMethod(l_startupstate1_G, blackhole);
             }
             if (sample) {
                 buffer.add((System.nanoTime() - time) / opsPerInv);
@@ -334,7 +334,7 @@ public final class MyBenchmark_testMethod_jmhTest {
         result.startTime = System.nanoTime();
         for (int b = 0; b < batchSize; b++) {
             if (control.volatileSpoiler) return;
-            l_mybenchmark0_0.testMethod(l_startupstate1_G);
+            l_mybenchmark0_0.testMethod(l_startupstate1_G, blackhole);
         }
         result.stopTime = System.nanoTime();
         result.realTime = realTime;

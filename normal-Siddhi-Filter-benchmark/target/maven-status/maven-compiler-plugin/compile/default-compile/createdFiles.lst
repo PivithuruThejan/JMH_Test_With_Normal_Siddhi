@@ -5,6 +5,7 @@ com/jenkov/generated/MyBenchmark_jmhType_B2.class
 com/jenkov/generated/MyBenchmark_StartUpState_jmhType.class
 com/jenkov/MyBenchmark$StartUpState.class
 com/jenkov/generated/MyBenchmark_jmhType.class
+com/jenkov/MyBenchmark$StartUpState$1.class
 com/jenkov/generated/MyBenchmark_jmhType_B1.class
 com/jenkov/generated/MyBenchmark_StartUpState_jmhType_B2.class
 com/jenkov/generated/MyBenchmark_testMethod_jmhTest.class

@@ -31,22 +31,25 @@
 
 package com.jenkov;
 
-import org.openjdk.jmh.annotations.Benchmark;
-import org.openjdk.jmh.annotations.Scope;
-import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.infra.Blackhole;
 import org.wso2.siddhi.core.SiddhiAppRuntime;
 import org.wso2.siddhi.core.SiddhiManager;
+import org.wso2.siddhi.core.event.Event;
+import org.wso2.siddhi.core.query.output.callback.QueryCallback;
 import org.wso2.siddhi.core.stream.input.InputHandler;
+
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
 /**
- *tests performance of normal siddhi
+ * Tests performance of "Siddhi".
  */
 public class MyBenchmark {
 
     /**
-     * gives 11 million events to Siddhi
+     * Inserts 11 million events to "Siddhi".
+     *
      * @param state
      * @throws InterruptedException
      * @throws InvocationTargetException
@@ -55,9 +58,11 @@ public class MyBenchmark {
      * @throws IllegalAccessException
      */
     @Benchmark
-    public void testMethod(StartUpState state) throws InterruptedException, InvocationTargetException,
+    @BenchmarkMode(Mode.All)
+    public void testMethod(StartUpState state, Blackhole blackhole) throws InterruptedException, InvocationTargetException,
             InstantiationException, IOException, IllegalAccessException {
-        for (int i = 1; i <= state.COUNT; i++) {
+        state.CHECK = 0;
+        for (int i = 0; i < state.COUNT; i++) {
             state.inputHandler.send(state.o1);
             state.inputHandler.send(state.o2);
             state.inputHandler.send(state.o3);
@@ -69,27 +74,27 @@ public class MyBenchmark {
             state.inputHandler.send(state.o9);
             state.inputHandler.send(state.o10);
             state.inputHandler.send(state.o11);
-
         }
 
+        blackhole.consume(state.CHECK);
     }
 
     /**
-     * handles operations that need not to be included to test
+     * Handles operations that need not to be tested.
      */
     @State(Scope.Benchmark)
     public static class StartUpState {
         private static final int COUNT = 1000000;
+        public static int CHECK = 0;
         public String definition = "@config(async = 'true') define stream players(playerName string,country string," +
                 "TestAverage float,TestStrikeRate float,ODIAverage float,ODIStrikeRate float,T20Average float," +
                 "T20StrikeRate float,BattingStyle string);";
-        public String query = "@info(name = 'query1') from players[TestAverage>45.0 and (ODIAverage>40.0 or ODIStrikeRate>100.0)" +
-                "and not(T20Average<10.0 or T20StrikeRate>150.0) or (ODIAverage<35.0 or T20StrikeRate>130.0 and " +
-                "not(TestStrikeRate < 55.0))] select playerName, BattingStyle "
-                + "insert into sqaud;";
+        public String query = "@info(name = 'query1') from players[(TestAverage>45.0 and TestStrikeRate>45.0 or ODIAverage>45.0)" +
+                " and (ODIAverage>40.0 or ODIStrikeRate>100.0) and not(T20Average<10.0 or T20StrikeRate>150.0 and TestStrikeRate>65.0)" +
+                " or (ODIAverage<35.0 or T20StrikeRate>130.0 and not(TestStrikeRate < 55.0))] select playerName, BattingStyle insert into sqaud;";
         public SiddhiManager siddhiManager = new SiddhiManager();
-        public SiddhiAppRuntime siddhiAppRuntime = siddhiManager.createSiddhiAppRuntime(definition + query);
-        public InputHandler inputHandler = siddhiAppRuntime.getInputHandler("players");
+        public SiddhiAppRuntime siddhiAppRuntime;
+        public InputHandler inputHandler;
         public Object[] o1 = new Object[]{"Upul Tharanga", "Sri Lanka", 33.0f, 62.5f, 32.5f, 80.5f, 16.3f, 116.3f, "LHB"};
         public Object[] o2 = new Object[]{"Anjelo Mathews", "Sri Lanka", 47.6f, 65.3f, 42.1f, 83.4f, 26.3f, 136.3f, "RHB"};
         public Object[] o3 = new Object[]{"Asela Gunaratne", "Sri Lanka", 53.7f, 57.4f, 36.5f, 85.5f, 36.3f, 146.7f, "RHB"};
@@ -102,6 +107,17 @@ public class MyBenchmark {
         public Object[] o10 = new Object[]{"Virat Kholi", "India", 52.0f, 66.5f, 53.5f, 89.5f, 30.3f, 136.3f, "RHB"};
         public Object[] o11 = new Object[]{"Rohit Sharma", "India", 32.0f, 62.5f, 42.5f, 93.5f, 26.3f, 141.3f, "RHB"};
 
+        public StartUpState() {
+            siddhiAppRuntime = siddhiManager.createSiddhiAppRuntime(definition + query);
+            siddhiAppRuntime.addCallback("query1", new QueryCallback() {
+                @Override
+                public void receive(long timeStamp, Event[] inEvents, Event[] removeEvents) {
+                    CHECK++;
+                }
+
+            });
+            inputHandler = siddhiAppRuntime.getInputHandler("players");
+        }
     }
 
 }
