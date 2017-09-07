@@ -1,1 +1,1 @@
-JMH S 22 com.jenkov.MyBenchmark S 51 com.jenkov.generated.MyBenchmark_testMethod_jmhTest S 10 testMethod S 3 All E A 1 1 1 E E E E E E E E E E E E E E E E E 
+JMH S 26 com.filterTest.MyBenchmark S 55 com.filterTest.generated.MyBenchmark_testMethod_jmhTest S 10 testMethod S 3 All E A 1 1 1 E E E E E E E E E E E E E E E E E 
