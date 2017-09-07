@@ -45,7 +45,7 @@ import java.lang.reflect.InvocationTargetException;
 /**
  * Tests performance of "Siddhi".
  */
-public class MyBenchmark {
+public class FilterBenchmark {
 
     /**
      * Inserts 11 million events to "Siddhi".
