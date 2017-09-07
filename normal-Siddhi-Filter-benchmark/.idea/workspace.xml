@@ -15,10 +15,10 @@
       <file leaf-file-name="FilterBenchmark.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/filterTest/FilterBenchmark.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-839">
-              <caret line="47" column="19" lean-forward="false" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
+            <state relative-caret-position="288">
+              <caret line="16" column="2" lean-forward="false" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
               <folding>
-                <element signature="e#0#6107#0" expanded="true" />
+                <element signature="e#0#5183#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -234,12 +234,12 @@
       <workItem from="1504245319175" duration="1950000" />
       <workItem from="1504257574610" duration="1132000" />
       <workItem from="1504674393933" duration="8342000" />
-      <workItem from="1504776416132" duration="1401000" />
+      <workItem from="1504776416132" duration="2005000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22317000" />
+    <option name="totallyTimeSpent" value="22921000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
@@ -358,10 +358,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/filterTest/FilterBenchmark.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-839">
-          <caret line="47" column="19" lean-forward="false" selection-start-line="47" selection-start-column="19" selection-end-line="47" selection-end-column="19" />
+        <state relative-caret-position="288">
+          <caret line="16" column="2" lean-forward="false" selection-start-line="16" selection-start-column="2" selection-end-line="16" selection-end-column="2" />
           <folding>
-            <element signature="e#0#6107#0" expanded="true" />
+            <element signature="e#0#5183#0" expanded="true" />
           </folding>
         </state>
       </provider>
